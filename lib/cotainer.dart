@@ -19,32 +19,55 @@ class MyContainer extends StatefulWidget {
 
 class _MyContainerState extends State<MyContainer> {
   String exp = "";
-
+  String top = "";
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Center(
         child: Container(
-      height: 300,
-      width: 200,
-      decoration: BoxDecoration(color: Colors.white, border: Border.all()),
+      height: size.height * 0.9,
+      width: size.width * 0.95,
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        borderRadius: BorderRadius.all(Radius.circular(26)),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 4,
+            height: 55,
           ),
           Container(
-              height: 45,
-              width: 170,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                shape: BoxShape.rectangle,
-              ),
-              child: Text(exp)),
+            height: 80,
+            width: 250,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              border: Border.all(),
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              shape: BoxShape.rectangle,
+            ),
+            child: Column(
+              children: [
+                Text(
+                  top,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  exp,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            alignment: Alignment.bottomRight,
+          ),
           SizedBox(
-            height: 4,
+            height: 50,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -293,18 +316,80 @@ class _MyContainerState extends State<MyContainer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    exp += "!";
+                  });
+                },
+                child: NumberBotton(
+                  num: "!",
+                  color: Colors.green,
+                ),
+              ),
+              SizedBox(
+                width: 4,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    exp += "{";
+                  });
+                },
+                child: NumberBotton(
+                  num: "{",
+                  color: Colors.green,
+                ),
+              ),
+              SizedBox(
+                width: 4,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    exp += "}";
+                  });
+                },
+                child: NumberBotton(
+                  num: "}",
+                  color: Colors.green,
+                ),
+              ),
+              SizedBox(
+                width: 4,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    exp += "^";
+                  });
+                },
+                child: NumberBotton(
+                  num: "^",
+                  color: Colors.green,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 4,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Builder(builder: (context) {
                 return InkWell(
                   onTap: () {
                     Expression expression = Expression(exp);
 
                     setState(() {
+                      top = exp;
                       exp = expression.eval().toString();
                     });
                   },
                   child: NumberBotton(
                     num: "=",
-                    color: Colors.blue,
+                    color: Colors.green,
                   ),
                 );
               }),
@@ -342,6 +427,8 @@ class _MyContainerState extends State<MyContainer> {
               InkWell(
                 onTap: () {
                   setState(() {
+                    top = "";
+
                     exp = "";
                   });
                 },
@@ -351,6 +438,9 @@ class _MyContainerState extends State<MyContainer> {
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 4,
           ),
         ],
       ),

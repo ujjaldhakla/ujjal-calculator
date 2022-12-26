@@ -12,9 +12,17 @@ class NumberBotton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 40,
-      child: Center(child: Text(num)),
+      height: 60,
+      width: 60,
+      child: Center(
+          child: Text(
+        num,
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      )),
       decoration: BoxDecoration(
         border: Border.all(
           color: color,

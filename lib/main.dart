@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "calculator.UD",
       home: Scaffold(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.white12,
         appBar: AppBar(
-          title: Center(child: Text("calculator.UD")),
+          title: Center(child: Text("ujjal.Dkl(calculator)")),
         ),
         body: MyContainer(),
       ),
